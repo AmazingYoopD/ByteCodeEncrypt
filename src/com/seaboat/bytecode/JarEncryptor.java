@@ -25,7 +25,7 @@ public class JarEncryptor {
       ByteArrayOutputStream baos = new ByteArrayOutputStream();
       byte[] buf = new byte[1024];
       File srcFile = new File(fileName);
-      File dstFile = new File(fileName.substring(0, fileName.indexOf("."))+"_encrypted.jar");
+      File dstFile = new File(fileName.substring(0, fileName.lastIndexOf("."))+"_encrypted.jar");
       FileOutputStream dstFos = new FileOutputStream(dstFile);
       JarOutputStream dstJar = new JarOutputStream(dstFos);
       JarFile srcJar = new JarFile(srcFile);
@@ -38,7 +38,8 @@ public class JarEncryptor {
           }
           byte[] bytes = baos.toByteArray();
           String name = entry.getName();
-          if(name.endsWith(".class")){
+          if(name.startsWith("com/wyd/demo2/controller") && name.endsWith(".class")){
+              System.out.println("加密的类：" + name);
               try {
                   bytes = ByteCodeEncryptor.encrypt(bytes);
               } catch (Exception e) {

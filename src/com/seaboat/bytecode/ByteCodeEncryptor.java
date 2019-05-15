@@ -10,7 +10,7 @@ package com.seaboat.bytecode;
  */
 public class ByteCodeEncryptor {
   static{
-    System.loadLibrary("ByteCodeEncryptor"); 
+    System.load("D:\\Microsoft Visual Studio 10.0\\Projects\\demoDll\\x64\\Debug\\FeByteCodeEncryptor.dll");
   }
   
   public native static byte[] encrypt(byte[] text);

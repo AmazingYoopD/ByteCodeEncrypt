@@ -14,6 +14,6 @@ import com.seaboat.bytecode.JarEncryptor;
 public class JarEncryptorTest {
 
   public static void main(String[] args){
-    JarEncryptor.encrypt("C:\\Users\\wj\\Desktop\\test.jar");
+    JarEncryptor.encrypt("C:\\Users\\lenovo\\Desktop\\demo2-0.0.1.jar");
   }
 }

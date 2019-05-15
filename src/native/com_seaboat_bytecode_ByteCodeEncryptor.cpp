@@ -5,7 +5,7 @@
 #include <jvmti.h>
 #include <jni_md.h>
 
-
+//class 加密
 void encode(char *str)
 {
 	unsigned int m = strlen(str);
@@ -17,6 +17,7 @@ void encode(char *str)
 
 }
 
+//class 解密
 void decode(char *str)
 {
 	unsigned int m = strlen(str);
@@ -38,7 +39,7 @@ Java_com_seaboat_bytecode_ByteCodeEncryptor_encrypt(JNIEnv * env, jclass cla, jb
 	return text;
 }
 
-
+// class解密回调
 void JNICALL ClassDecryptHook(
 	jvmtiEnv *jvmti_env,
 	JNIEnv* jni_env,
@@ -57,7 +58,8 @@ void JNICALL ClassDecryptHook(
 
 	unsigned char* _data = *new_class_data;
 
-	if (name&&strncmp(name, "com/seaboat/", 12) == 0) {
+	if (name&&strncmp(name, "com/wyd/demo2/controller", 22) == 0) {
+		printf("解密的class：%s",name);printf("\n");
 		for (int i = 0; i < class_data_len; i++)
 		{
 			_data[i] = class_data[i];
